@@ -1,14 +1,27 @@
 
-<% flash.each do |type, msg| %>
-  <% if user_signed_in? %>
-    <div class="alert alert-success">
-      <%= msg %>
-    </div>
-  <% else %>
-    <div class="alert alert-secondary">
-      <%= msg %>
-    </div>
+<div class="post-body">
+  
+  <% flash.each do |type, msg| %>
+    <% if user_signed_in? %>
+      <div class="alert alert-success">
+        <%= msg %>
+      </div>
+    <% else %>
+      <div class="alert alert-secondary">
+        <%= msg %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+  
+  <div class="content">
+    <div class="column shadow shadow-primary shadow-intensity-lg">
 
-No posts yet!
+    </div>
+    <div class="column-middle">
+
+    </div>
+    <div class="column shadow shadow-primary shadow-intensity-lg">
+
+    </div>
+  </div>
+</div>
