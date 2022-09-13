@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
+  validates :full_name, presence: true
+
   has_many :invitations
   has_many :pending_invitations, -> { where confirmed: false }, class_name: 'Invitation', foreign_key: 'friend_id'
 
@@ -20,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def send_invitation(user)
-    invitations.create(friend_id: user.id)
+    invitations.create(friend_id: user)
   end
 
   def self.from_omniauth(auth)

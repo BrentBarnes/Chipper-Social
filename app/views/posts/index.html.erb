@@ -1,6 +1,4 @@
 
-<div class="post-body">
-  
   <% flash.each do |type, msg| %>
     <% if user_signed_in? %>
       <div class="alert alert-success">
@@ -15,7 +13,12 @@
   
   <div class="content">
     <div class="column shadow shadow-primary shadow-intensity-lg">
-
+      <ul>
+        <li><%= link_to "Timeline", root_path%><br></li>
+        <li><%= link_to "Profile", user_path(current_user.id) %></li>
+        <li><%= link_to "Friend Requests", invitations_path %></li>
+        <li><%= link_to "Find Friends", users_path %></li>
+      </ul>
     </div>
     <div class="column-middle">
 
@@ -24,4 +27,3 @@
 
     </div>
   </div>
-</div>
