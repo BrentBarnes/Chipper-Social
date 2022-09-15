@@ -15,15 +15,20 @@
     <div class="column shadow shadow-primary shadow-intensity-lg">
       <ul>
         <li><%= link_to "Timeline", root_path%><br></li>
-        <%# <li><%= link_to "Profile", user_path(current_user.id) %>
-        <%# </li> %> %>
+        <li><%= link_to "Profile", user_path(current_user.id) %></li>
         <li><%= link_to "Friend Requests", invitations_path %></li>
-        <li><%= link_to "Find Friends", users_path %></li>
+        <li>
+          <%= link_to "Find Friends", users_path, data: { turbo_frame: "middle-column"} %>
+        </li>
+        <li><%= link_to "Your Friends", invitation_path(current_user.id) %></li>
       </ul>
     </div>
-    <div class="column-middle">
-
-    </div>
+    <%= turbo_frame_tag "middle-column" do %>
+      <div class="column-middle">
+        Posts#index
+        <%= link_to "Find Friends", users_path %>
+      </div>
+    <% end %>
     <div class="column shadow shadow-primary shadow-intensity-lg">
 
     </div>

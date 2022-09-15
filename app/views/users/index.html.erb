@@ -1,15 +1,20 @@
 <h1>Find Friends!</h1>
 
-<% @users.each do |user| %>
-  <% unless current_user == user %>
-    <%= user.email %>
-    <% if current_user.friend_with?(user) %>
-      Already friends!
-    <% elsif Invitation.reacted?(current_user.id, user) %>
-      <button type="button" class="btn btn-secondary">Request Sent</button>
-    <% else %>
-      <%= button_to "Add Friend", invitations_path(:user => user), class: "btn btn-primary" %>
+<%= turbo_frame_tag "middle-column" do %>
+  <div>
+    <% @users.each do |user| %>
+      <% unless current_user == user %>
+        <%= user.email %>
+        <% if current_user.friend_with?(user) %>
+          Already friends!
+        <% elsif Invitation.reacted?(current_user.id, user) %>
+          <button type="button" class="btn btn-secondary">Request Pending</button>
+        <% else %>
+          <%= button_to "Add Friend", invitations_path(:user => user), class: "btn btn-primary" %>
+        <% end %>
+        <br>
+      <% end %>
     <% end %>
-    <br>
-  <% end %>
+    <%= link_to "back to posts", root_path %>
+  </div>
 <% end %>
