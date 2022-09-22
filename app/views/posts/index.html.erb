@@ -1,20 +1,14 @@
 
   <% flash.each do |type, msg| %>
-    <% if user_signed_in? %>
-      <div class="alert alert-success">
-        <%= msg %>
-      </div>
-    <% else %>
-      <div class="alert alert-secondary">
-        <%= msg %>
-      </div>
-    <% end %>
+    <div class="alert alert-secondary">
+      <%= msg %>
+    </div>
   <% end %>
   
   <div class="content">
     <div class="column shadow shadow-primary shadow-intensity-lg">
       <ul>
-        <li><%= link_to "Timeline", root_path%><br></li>
+        <li><%= link_to "Timeline", posts_path%><br></li>
         <li><%= link_to "Profile", user_path(current_user.id) %></li>
         <li><%= link_to "Friend Requests", invitations_path %></li>
         <li>
@@ -23,12 +17,26 @@
         <li><%= link_to "Your Friends", invitation_path(current_user.id) %></li>
       </ul>
     </div>
+
+
     <%= turbo_frame_tag "middle-column" do %>
+
       <div class="column-middle">
-        Posts#index
-        <%= link_to "Find Friends", users_path %>
+        <%= form_with model: @post do |form| %>
+          <%= form.hidden_field :author, value: current_user.full_name %>
+          <%= form.text_area :post_content, placeholder: "What's on your mind?", class: "post-box" %>
+          <%= form.submit class: "btn btn-primary post-button" %>
+        <% end %>
       </div>
+      <% if @posts %>
+        <% @posts.each do |post| %>
+          <%= post.author %>
+          <%= post.post_content %>
+        <% end %>
+      <% end %>
     <% end %>
+
+
     <div class="column shadow shadow-primary shadow-intensity-lg">
 
     </div>

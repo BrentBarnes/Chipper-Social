@@ -22,7 +22,36 @@ ul {
   display: grid;
   overflow: hidden;
   grid-template-columns: 1fr 3fr 1fr;
-  /* display: flex; */
   flex-grow: 1;
-  /* flex-direction: column; */
+}
+
+.column-middle {
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  resize: none;
+}
+
+.post-box {
+  width: 100%;
+  height: 5rem;
+  resize: none;
+  border-radius: 25px;
+  border: 1px solid black;
+  padding: .5rem;
+  overflow: auto;
+  outline: none;
+  resize: none;
 }
