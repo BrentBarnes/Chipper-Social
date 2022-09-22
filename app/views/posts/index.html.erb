@@ -2,6 +2,9 @@
   <% flash.each do |type, msg| %>
     <div class="alert alert-secondary">
       <%= msg %>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </div>
   <% end %>
   
@@ -23,17 +26,35 @@
 
       <div class="column-middle">
         <%= form_with model: @post, url: posts_path, scope: :post, data: {turbo: "false"} do |form| %>
-          <%= form.hidden_field :author, value: current_user.full_name %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
           <%= form.text_area :post_content, placeholder: "What's on your mind?", class: "post-box" %>
           <%= form.submit class: "btn btn-primary post-button" %>
         <% end %>
-      </div>
-      <% if @posts %>
-        <% @posts.each do |post| %>
-          <%= post.author %>
-          <%= post.post_content %>
+      
+        <% if @posts %>
+          <% @posts.each do |post| %>
+            <div class="post shadow shadow-intensity-xl mt-3">
+              <div>
+                <%= link_to post.user.full_name, user_path(post.user_id), class: "text-decoration-none" %>
+              </div>
+              <div class="text-muted">
+                <%= post.created_at.strftime("%B %e %Y") %>
+              </div>
+              <hr class="my-2">
+              <%= post.post_content %>
+              <hr class="my-2">
+              <p>
+              <% pre_like = post.likes.find { |like| like.user_id == current_user.id } %>
+              <% if pre_like %>
+                <%= button_to "Unlike", post_like_path(post, pre_like), method: :delete %>
+              <% else %>
+                <%= button_to "Like", post_likes_path(post), method: :post %>
+              <% end %>
+              <%= post.likes.count %></p>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     <% end %>
 
 
