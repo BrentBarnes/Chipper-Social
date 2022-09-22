@@ -10,8 +10,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = Post.new(post_params)
+    binding.pry
     if @post.save
+      binding.pry
       redirect_to posts_path
     else
       flash.now[:notice] = "Your post was unable to be submitted."

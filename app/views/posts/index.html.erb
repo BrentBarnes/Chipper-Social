@@ -22,7 +22,7 @@
     <%= turbo_frame_tag "middle-column" do %>
 
       <div class="column-middle">
-        <%= form_with model: @post do |form| %>
+        <%= form_with model: @post, url: posts_path, scope: :post, data: {turbo: "false"} do |form| %>
           <%= form.hidden_field :author, value: current_user.full_name %>
           <%= form.text_area :post_content, placeholder: "What's on your mind?", class: "post-box" %>
           <%= form.submit class: "btn btn-primary post-button" %>
