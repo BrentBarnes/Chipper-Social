@@ -1,0 +1,10 @@
+
+<%= turbo_frame_tag "middle-column" do %>
+  <div class="column-middle">
+    <%= form_with model: @post, url: post_path(@post) do |form| %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.text_area :post_content, placeholder: "Edit your post...", class: "post-box" %>
+      <%= form.submit class: "btn btn-primary post-button" %>
+  </div>
+  <% end %>
+<% end %>

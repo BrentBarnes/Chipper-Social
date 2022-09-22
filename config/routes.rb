@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/destroy'
   
   
   devise_for :users, controllers: { 
@@ -8,8 +10,9 @@ Rails.application.routes.draw do
   }
   resources :users, only: [:show, :index, :edit]
   resources :invitations, only: [:show, :index, :create, :update, :destroy]
-  resources :posts, only: [:index, :new, :create, :destroy] do
-    resources :likes
+  resources :posts do
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :edit, :update, :destroy]
   end
 
   root "posts#index"

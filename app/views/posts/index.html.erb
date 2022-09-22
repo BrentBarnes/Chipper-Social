@@ -2,8 +2,10 @@
   <% flash.each do |type, msg| %>
     <div class="alert alert-secondary">
       <%= msg %>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% if @post %>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       <% end %>
     </div>
   <% end %>
@@ -34,8 +36,12 @@
         <% if @posts %>
           <% @posts.each do |post| %>
             <div class="post shadow shadow-intensity-xl mt-3">
-              <div>
-                <%= link_to post.user.full_name, user_path(post.user_id), class: "text-decoration-none" %>
+              <div class="d-flex">
+                <div class="flex-grow-1">
+                  <%= link_to post.user.full_name, user_path(post.user_id), class: "text-decoration-none" %>
+                </div>
+                <%= link_to "edit", edit_post_path(post), method: :edit %>
+                <%= button_to "delete", post_path(post), method: :delete %>
               </div>
               <div class="text-muted">
                 <%= post.created_at.strftime("%B %e %Y") %>
@@ -44,13 +50,16 @@
               <%= post.post_content %>
               <hr class="my-2">
               <p>
-              <% pre_like = post.likes.find { |like| like.user_id == current_user.id } %>
-              <% if pre_like %>
-                <%= button_to "Unlike", post_like_path(post, pre_like), method: :delete %>
-              <% else %>
-                <%= button_to "Like", post_likes_path(post), method: :post %>
-              <% end %>
-              <%= post.likes.count %></p>
+              <div class="d-flex">
+                <% pre_like = post.likes.find { |like| like.user_id == current_user.id } %>
+                <% if pre_like %>
+                  <%= button_to "Unlike", post_like_path(post, pre_like), method: :delete %>
+                <% else %>
+                  <%= button_to "Like", post_likes_path(post), method: :post %>
+                <% end %>
+                <div class="flex-grow-1"><%= post.likes.count %></p></div>
+                <%= link_to "Comment (#{post.comments.count})", post_path(post), class: "text-decoration-none" %>
+              </div>
             </div>
           <% end %>
         <% end %>
