@@ -1,13 +1,6 @@
 
-<div class="content">
-    <div class="column shadow shadow-primary shadow-intensity-lg">
-      <ul>
-        <li><%= link_to "Timeline", posts_path%><br></li>
-        <li><%= link_to "Profile", user_path(current_user.id) %></li>
-        <li><%= link_to "Friend Requests", invitations_path %></li>
-        <li><%= link_to "Find Friends", users_path %></li>
-      </ul>
-    </div>
+<%= turbo_frame_tag "middle-column" do %>
+  <div class="column-middle">
     <div class="column-middle">
       <% @my_invitations.each do |invitation| %>
         <% requester = User.find(invitation.user_id) %>
@@ -17,7 +10,5 @@
         <br>
       <% end %>
     </div>
-    <div class="column shadow shadow-primary shadow-intensity-lg">
-
-    </div>
   </div>
+<% end %>

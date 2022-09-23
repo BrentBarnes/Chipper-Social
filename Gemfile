@@ -82,6 +82,8 @@ group :test do
 end
 
 gem 'devise'
+gem 'gravtastic'
+gem 'gravatar_image_tag'
 gem "cssbundling-rails", "~> 1.1"
 gem 'omniauth'
 gem 'omniauth-google-oauth2'

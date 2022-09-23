@@ -14,12 +14,13 @@
     <div class="column shadow shadow-primary shadow-intensity-lg">
       <ul>
         <li><%= link_to "Timeline", posts_path%><br></li>
-        <li><%= link_to "Profile", user_path(current_user.id) %></li>
-        <li><%= link_to "Friend Requests", invitations_path %></li>
+        <li><%= link_to "Profile", user_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
+        <li><%= link_to "Edit Profile", edit_user_registration_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
+        <li><%= link_to "Friend Requests", invitations_path, data: { turbo_frame: "middle-column"} %></li>
         <li>
           <%= link_to "Find Friends", users_path, data: { turbo_frame: "middle-column"} %>
         </li>
-        <li><%= link_to "Your Friends", invitation_path(current_user.id) %></li>
+        <li><%= link_to "Your Friends", invitation_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
       </ul>
     </div>
 
@@ -27,7 +28,7 @@
     <%= turbo_frame_tag "middle-column" do %>
 
       <div class="column-middle">
-        <%= form_with model: @post, url: posts_path, scope: :post, data: {turbo: "false"} do |form| %>
+        <%= form_with model: @post, url: posts_path, scope: :post do |form| %>
           <%= form.hidden_field :user_id, value: current_user.id %>
           <%= form.text_area :post_content, placeholder: "What's on your mind?", class: "post-box" %>
           <%= form.submit class: "btn btn-primary post-button" %>
@@ -37,14 +38,21 @@
           <% @posts.each do |post| %>
             <div class="post shadow shadow-intensity-xl mt-3">
               <div class="d-flex">
-                <div class="flex-grow-1">
-                  <%= link_to post.user.full_name, user_path(post.user_id), class: "text-decoration-none" %>
+                <%= image_tag user_avatar(post.user), size: 60, class: "rounded-circle" %>
+                <div class="d-flex flex-column flex-grow-1">
+                  <div class="d-flex">
+                    <div class="flex-grow-1">
+                      <%= link_to post.user.full_name, user_path(post.user_id), class: "text-decoration-none" %>
+                    </div>
+                    <% if post.user_id == current_user.id %>
+                      <%= link_to "edit", edit_post_path(post), method: :edit %>
+                      <%= button_to "delete", post_path(post), method: :delete %>
+                    <% end %>
+                  </div>
+                  <div class="text-muted">
+                    <%= post.created_at.strftime("%B %e %Y") %>
+                  </div>
                 </div>
-                <%= link_to "edit", edit_post_path(post), method: :edit %>
-                <%= button_to "delete", post_path(post), method: :delete %>
-              </div>
-              <div class="text-muted">
-                <%= post.created_at.strftime("%B %e %Y") %>
               </div>
               <hr class="my-2">
               <%= post.post_content %>
