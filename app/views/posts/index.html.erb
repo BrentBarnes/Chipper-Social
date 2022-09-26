@@ -11,16 +11,16 @@
   <% end %>
   
   <div class="content">
-    <div class="column shadow shadow-primary shadow-intensity-lg">
+    <div class="left-column column shadow shadow-primary shadow-intensity-lg">
       <ul>
         <li><%= link_to "Timeline", posts_path%><br></li>
         <li><%= link_to "Profile", user_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
-        <li><%= link_to "Edit Profile", edit_user_registration_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
+        <li><%= link_to "Edit Profile", edit_user_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
         <li><%= link_to "Friend Requests", invitations_path, data: { turbo_frame: "middle-column"} %></li>
-        <li>
-          <%= link_to "Find Friends", users_path, data: { turbo_frame: "middle-column"} %>
-        </li>
-        <li><%= link_to "Your Friends", invitation_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
+        <li><%= link_to "Find Friends", users_path, data: { turbo_frame: "middle-column"} %></li>
+        <li><%= link_to "My Friends", invitation_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
+        <li><%= link_to "My Posts", user_posts_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
+        <li><%= link_to "Liked Posts", user_likes_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
       </ul>
     </div>
 
@@ -34,11 +34,13 @@
           <%= form.submit class: "btn btn-primary post-button" %>
         <% end %>
       
-        <% if @posts %>
-          <% @posts.each do |post| %>
+        <% if @friends_posts %>
+          <% @friends_posts.each do |post| %>
             <div class="post shadow shadow-intensity-xl mt-3">
               <div class="d-flex">
-                <%= image_tag user_avatar(post.user), size: 60, class: "rounded-circle" %>
+                <%= link_to user_path(post.user), data: { turbo_frame: "middle-column"} do %>
+                  <%= image_tag user_avatar(post.user), class: "rounded-circle avatar-small" %>
+                <% end %>
                 <div class="d-flex flex-column flex-grow-1">
                   <div class="d-flex">
                     <div class="flex-grow-1">
@@ -75,7 +77,14 @@
     <% end %>
 
 
-    <div class="column shadow shadow-primary shadow-intensity-lg">
-
+    <div class="right-column column shadow shadow-primary shadow-intensity-lg">
+      <% User.not_friends(current_user).each do |user| %>
+        <%= link_to user_path(user), class: "text-decoration-none text-secondary", data: { turbo_frame: "middle-column"} do %>
+          <div class="px-3 pt-3">
+            <%= image_tag user_avatar(user), class: "rounded-circle avatar-small" %>
+            <%= user.full_name %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>

@@ -1,6 +1,14 @@
 class LikesController < ApplicationController
-  before_action :set_liked_object
+  before_action :set_liked_object, except: [:show, :index]
   before_action :set_like, only: [:destroy]
+
+  def index
+    @user = User.find(params[:user_id])
+    @user_likes = Like.where(user_id: @user, likeable_type: "Post")
+    @liked_posts = []
+
+    @user.likes.each { |like| @liked_posts << Post.find(like.likeable_id)}
+  end
 
   def create
     @object.likes.create(user_id: current_user.id)

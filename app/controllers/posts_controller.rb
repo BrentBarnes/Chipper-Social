@@ -3,6 +3,13 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @friends_posts = []
+    current_user.friends.each do |friend|
+      if friend.posts.any?
+        @friends_posts.concat(friend.posts)
+      end
+    end
+    @friends_posts.concat(current_user.posts)
   end
 
   def new

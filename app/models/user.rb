@@ -25,6 +25,18 @@ class User < ApplicationRecord
     User.where(id: ids)
   end
 
+  def self.not_friends(current_user)
+    users = User.all.shuffle.first(4)
+    not_friends_list = []
+
+    users.each do |user|
+      if !Invitation.confirmed_record?(current_user.id, user.id) && user != current_user
+        not_friends_list << user
+      end
+    end
+    not_friends_list
+  end
+
   def friend_with?(user)
     Invitation.confirmed_record?(id, user.id)
   end

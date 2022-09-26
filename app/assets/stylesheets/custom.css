@@ -12,6 +12,17 @@ html, body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.left-column,
+.middle-column,
+.right-column {
+  overflow: auto;
+  height: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
 }
 
 ul {
@@ -20,16 +31,26 @@ ul {
 
 .content {
   display: grid;
-  overflow: hidden;
   grid-template-columns: 1fr 3fr 1fr;
   flex-grow: 1;
 }
 
 .column-middle {
-  height: 100%;
+  height: 100vh;
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+  padding-bottom: 5rem;
+}
+
+.column-middle::-webkit-scrollbar {
+  display: none;
+}
+
+.column-middle {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 textarea {
@@ -65,4 +86,24 @@ textarea {
 hr {
   border-color: red;
   margin: 0rem;
+}
+
+.avatar-extra-small {
+  height: 2rem;
+  width: 2rem;
+}
+
+.avatar-small {
+  height: 4rem;
+  width: 4rem;
+}
+
+.avatar-medium {
+  height: 10rem;
+  width: 10rem;
+}
+
+.avatar-large {
+  height: 30rem;
+  width: 30rem;
 }

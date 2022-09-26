@@ -1,5 +1,46 @@
 <%= turbo_frame_tag "middle-column" do %>
   <div class="column-middle">
-    hello
+    <div class="d-flex flex-column">
+      <div class="d-flex align-items-center justify-content-around">
+        <div>
+          <%= image_tag user_avatar(@user), class: "rounded-circle avatar-large" %>
+        </div>
+        <div class="d-flex flex-column">
+          <div class="display-1 text-muted">
+            <%= @user.full_name %>
+          </div>
+          <div class="d-flex justify-content-center ">
+            <%= link_to "view all posts", user_posts_path(@user.id), class: "m-3 text-decoration-none" %>
+            <%= link_to "friends", invitation_path(@user.id), class: "m-3 text-decoration-none" %>
+            <%= link_to "liked posts", user_likes_path(@user.id), class: "m-3 text-decoration-none" %>
+          </div>
+          <div class="d-flex flex-column">
+            <% if @user.location %>
+              <div>
+                <%= @user.location %>
+              </div>
+            <% end %>
+            <% if @user.education %>
+              <div>
+                <%= @user.education %>
+              </div>
+            <% end %>
+            <% if @user.occupation %>
+              <div>
+                <%= @user.occupation %>
+              </div>
+            <% end %>
+            <% if @user.birthday %>
+              <div>
+                <%= @user.birthday.strftime("%B %d, %Y") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <%= render "static_pages/user_posts" %>
+    </div>
   </div>
 <% end %>

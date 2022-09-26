@@ -1,22 +1,11 @@
 
-<div class="content">
-    <div class="column shadow shadow-primary shadow-intensity-lg">
-      <ul>
-        <li><%= link_to "Timeline", posts_path%><br></li>
-        <li><%= link_to "Profile", user_path(current_user.id) %></li>
-        <li><%= link_to "Friend Requests", invitations_path %></li>
-        <li><%= link_to "Find Friends", users_path %></li>
-      </ul>
-    </div>
-    <div class="column-middle">
-      <% @my_friends.each do |friend| %>
-        <% invitation = Invitation.find_invitation(current_user.id, friend.id) %>
-        <%= friend.full_name %>
-        <%= button_to "Unfriend", invitation_path(invitation), method: :delete, class: "btn btn-danger" %>
-        <br>
-      <% end %>
-    </div>
-    <div class="column shadow shadow-primary shadow-intensity-lg">
-
-    </div>
+<%= turbo_frame_tag "middle-column" do%>
+  <div class="column-middle">
+    <% @my_friends.each do |friend| %>
+      <% invitation = Invitation.find_invitation(current_user.id, friend.id) %>
+      <%= friend.full_name %>
+      <%= button_to "Unfriend", invitation_path(invitation), method: :delete, class: "btn btn-danger" %>
+      <br>
+    <% end %>
   </div>
+<% end %>
