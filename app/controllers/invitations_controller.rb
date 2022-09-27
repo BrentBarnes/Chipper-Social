@@ -21,7 +21,6 @@ class InvitationsController < ApplicationController
     if response == 'accepted'
       @invitation.confirmed = true
       @invitation.save
-      # debugger
       redirect_to invitations_path
     else
       @invitation.destroy

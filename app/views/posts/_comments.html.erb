@@ -1,0 +1,24 @@
+
+<div>
+  <% if @post.comments.any? %>
+    <hr class="my-2">
+    <% @post.comments.each do |comment| %>
+      <div class="card p-2 my-2">
+        <div class="d-flex">
+          <%= link_to comment.user.full_name, user_path(comment.user_id), class: "text-decoration-none flex-grow-1" %>
+          <% pre_like = comment.likes.find { |like| like.user_id == current_user.id } %>
+          <% if pre_like %>
+            <%= button_to "Unlike", comment_like_path(comment, pre_like), class: "comment-unlike-btn", method: :delete %>
+          <% else %>  
+            <%= button_to "Like", comment_likes_path(comment), class: "comment-like-btn", method: :post %>
+          <% end %>
+          <div class="comment-like-count"><%= comment.likes.count %></div>
+          <% if comment.user_id == current_user.id %>
+            <%= button_to "delete", post_comment_path(@post, comment), method: :delete %>
+          <% end %>
+        </div>
+        <%= comment.comment_content %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

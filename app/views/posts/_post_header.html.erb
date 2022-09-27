@@ -1,0 +1,20 @@
+
+<div class="d-flex">
+  <%= link_to user_path(post.user), class: "post-avatar", data: { turbo_frame: "middle-column"} do %>
+    <%= image_tag user_avatar(post.user), class: "rounded-circle avatar-small" %>
+  <% end %>
+  <div class="d-flex flex-column flex-grow-1">
+    <div class="d-flex">
+      <div class="flex-grow-1">
+        <%= link_to post.user.full_name, user_path(post.user_id), class: "text-decoration-none post-name" %>
+      </div>
+      <% if post.user_id == current_user.id %>
+        <%= link_to "edit", edit_post_path(post), method: :edit %>
+        <%= button_to "delete", post_path(post), method: :delete %>
+      <% end %>
+    </div>
+    <div class="text-muted">
+      <%= post.created_at.strftime("%B %e %Y") %>
+    </div>
+  </div>
+</div>

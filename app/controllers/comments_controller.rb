@@ -2,10 +2,12 @@ class CommentsController < ApplicationController
   before_action :set_post
 
   def create
-    if @post.comments.create(user_id: current_user.id, comment_content: params[:comment_content])
+    content = params[:comment][:comment_content]
+    if @post.comments.create(comment_params) && content != ""
       redirect_to post_path(@post)
     else
-      render "posts/show"
+      flash[:notice] = "Your comment could not be posted"
+      redirect_to post_path(@post)
     end
   end
 
@@ -30,6 +32,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:user_id, :comment_contnet)
+    params.require(:comment).permit(:user_id, :comment_content)
   end
 end

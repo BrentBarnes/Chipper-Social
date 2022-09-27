@@ -18,6 +18,6 @@ RSpec.describe 'Logging in', type: :feature do
     fill_in 'user_email', with: 'Dan@gmail.com'
     fill_in 'user_password', with: 'Not the password'
     click_on 'Log in'
-    expect(page).to have_content('Invalid Email or password.')
+    expect(page).to have_button('Log in')
   end
 end

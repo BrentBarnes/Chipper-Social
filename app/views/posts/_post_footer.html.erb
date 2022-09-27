@@ -1,0 +1,17 @@
+
+<div class="d-flex">
+  <div>
+    <% pre_like = post.likes.find { |like| like.user_id == current_user.id } %>
+    <% if pre_like %>
+      <%= button_to "Unlike", post_like_path(post, pre_like), method: :delete %>
+    <% else %>
+      <%= button_to "Like", post_likes_path(post), method: :post %>
+    <% end %>
+  </div>
+  <div class="flex-grow-1 post-like-count">
+    <%= post.likes.count %>
+  </div>
+  <div>
+    <%= link_to "Comment (#{post.comments.count})", post_path(post), class: "text-decoration-none" %>
+  </div>
+</div>

@@ -2,41 +2,7 @@
 <%= turbo_frame_tag "middle-column" do %>
   <div class="column-middle">
     <% if @liked_posts %>
-      <% @liked_posts.each do |post| %>
-        <div class="post shadow shadow-intensity-xl mt-3">
-          <div class="d-flex">
-            <%= image_tag user_avatar(post.user), size: 60, class: "rounded-circle" %>
-            <div class="d-flex flex-column flex-grow-1">
-              <div class="d-flex">
-                <div class="flex-grow-1">
-                  <%= link_to post.user.full_name, user_path(post.user_id), class: "text-decoration-none" %>
-                </div>
-                <% if post.user_id == current_user.id %>
-                  <%= link_to "edit", edit_post_path(post), method: :edit %>
-                  <%= button_to "delete", post_path(post), method: :delete %>
-                <% end %>
-              </div>
-              <div class="text-muted">
-                <%= post.created_at.strftime("%B %e %Y") %>
-              </div>
-            </div>
-          </div>
-          <hr class="my-2">
-          <%= post.post_content %>
-          <hr class="my-2">
-          <p>
-          <div class="d-flex">
-            <% pre_like = post.likes.find { |like| like.user_id == current_user.id } %>
-            <% if pre_like %>
-              <%= button_to "Unlike", post_like_path(post, pre_like), method: :delete %>
-            <% else %>
-              <%= button_to "Like", post_likes_path(post), method: :post %>
-            <% end %>
-            <div class="flex-grow-1"><%= post.likes.count %></p></div>
-            <%= link_to "Comment (#{post.comments.count})", post_path(post), class: "text-decoration-none" %>
-          </div>
-        </div>
-      <% end %>
+      <%= render partial: "posts/post_card", locals: { posts: @liked_posts } %>
     <% end %>
   </div>
 <% end %>

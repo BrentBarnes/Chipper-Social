@@ -22,11 +22,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save
+    if @post.save && @post.post_content != ""
       redirect_to posts_path
     else
-      flash.now[:notice] = "Your post was unable to be submitted."
-      render :index
+      flash[:notice] = "Your post was unable to be submitted."
+      redirect_to root_path
     end
   end
   

@@ -35,6 +35,19 @@
                 <%= @user.birthday.strftime("%B %d, %Y") %>
               </div>
             <% end %>
+            <% unless current_user == @user %>
+              <div>
+                <% if current_user.friend_with?(@user) %>
+                  <button type="button" class="btn btn-success">Friends!</button>
+                <% elsif !Invitation.where(user_id: @user.id, friend_id: current_user.id).empty? %>
+                  <%= link_to "Request Received", invitations_path, class: "btn btn-warning" %>
+                <% elsif !Invitation.where(user_id: current_user.id, friend_id: @user.id).empty? %>
+                  <button type="button" class="btn btn-secondary">Request Sent</button>
+                <% else %>
+                  <%= button_to "Add Friend", invitations_path(:user => @user), class: "btn btn-primary" %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <div class="d-flex align-items-center">
-            <%= link_to user_path(current_user), class: "text-decoration-none text-secondary", data: { turbo_frame: "middle-column"} do %>
+            <%= link_to user_path(current_user), class: "text-decoration-none text-secondary nav-profile", data: { turbo_frame: "middle-column"} do %>
               <li class="nav-item text-dark fs-4">
                 <%= image_tag user_avatar(current_user), class: "rounded-circle avatar-extra-small" %>
                 <%= current_user.full_name %>

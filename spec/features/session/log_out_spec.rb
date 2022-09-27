@@ -9,10 +9,8 @@ RSpec.describe 'Logging out', type: :feature do
     user = create(:user)
     sign_in user
     visit new_user_session_path
-    sleep(2)
     
     click_on 'Sign Out'
-    sleep(2)
-    expect(page).to has_content?("Log in")
+    expect(page).to have_button("Log in")
   end
 end
