@@ -1,5 +1,5 @@
 
-<%= form_with model: model, url: posts_path, scope: scope do |form| %>
+<%= form_with model: model, url: url, scope: scope do |form| %>
   <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.text_area content, placeholder: placeholder, class: "post-box" %>
   <%= form.submit "Post", class: "btn btn-primary post-button" %>

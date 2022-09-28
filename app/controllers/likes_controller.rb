@@ -4,27 +4,29 @@ class LikesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @user_likes = Like.where(user_id: @user, likeable_type: "Post")
-    @liked_posts = []
+    posts = []
 
-    @user.likes.each { |like| @liked_posts << Post.find(like.likeable_id)}
+    @user.likes.each { |like| posts << Post.find(like.likeable_id)}
+
+    posts = posts.sort_by &:created_at
+    @liked_posts = posts.reverse
   end
 
   def create
     @object.likes.create(user_id: current_user.id)
     if params[:post_id].present?
-      redirect_to posts_path
+      redirect_back(fallback_location: post_path(@object.id))
     else
-      redirect_to post_path(@object.post_id)
+      redirect_to post_path(@object.id)
     end
   end
 
   def destroy
     @like.destroy
     if params[:post_id].present?
-      redirect_to posts_path
+      redirect_back(fallback_location: post_path(@object.id))
     else
-      redirect_to post_path(@object.post_id)
+      redirect_to post_path(@object.id)
     end
   end
 

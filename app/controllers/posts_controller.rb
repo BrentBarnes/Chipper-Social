@@ -3,13 +3,15 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @friends_posts = []
+    @posts = @posts.order('created_at DESC')
+    posts = []
     current_user.friends.each do |friend|
       if friend.posts.any?
-        @friends_posts.concat(friend.posts)
+        posts.concat(friend.posts)
       end
     end
-    @friends_posts.concat(current_user.posts)
+    posts = posts.concat(current_user.posts).sort_by &:created_at
+    @friends_posts = posts.reverse
   end
 
   def new
@@ -37,13 +39,14 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to posts_path
+    
+    redirect_to post_path(@post)
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_back(fallback_location: users_path)
   end
 
   private

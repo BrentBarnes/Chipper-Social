@@ -2,7 +2,7 @@
 <%= turbo_frame_tag "middle-column" do %>
   <div class="column-middle">
     <% if @liked_posts %>
-      <%= render partial: "posts/post_card", locals: { posts: @liked_posts } %>
+      <%= render partial: "posts/post_card", locals: { posts: @liked_posts, path: user_likes_path(current_user.id) } %>
     <% end %>
   </div>
 <% end %>

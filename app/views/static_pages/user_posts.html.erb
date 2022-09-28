@@ -1,6 +1,6 @@
 
 <%= turbo_frame_tag "middle-column" do %>
   <div class="column-middle">
-    <%= render "user_posts" %>
+    <%= render partial: "user_posts", locals: { user: current_user } %>
   </div>
 <% end %>

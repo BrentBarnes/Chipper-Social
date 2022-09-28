@@ -1,0 +1,11 @@
+
+<% flash.each do |type, msg| %>
+  <div class="alert alert-secondary">
+    <%= msg %>
+    <% if @post %>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

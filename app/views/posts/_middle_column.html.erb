@@ -1,0 +1,11 @@
+
+<%= turbo_frame_tag "middle-column", data: { turbo_action: "advance" } do %>
+  <%= render "layouts/flash_message" %>
+  <div class="column-middle">
+    <%= render partial: "posts/text_box", locals: { model: @post, url: posts_path, 
+    scope: :post, content: :post_content, placeholder: "What's on your mind?" } %>
+    <% if @friends_posts %>
+      <%= render partial: "post_card", locals: { posts: @friends_posts, path: posts_path } %>
+    <% end %>
+  </div>
+<% end %>

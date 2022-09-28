@@ -53,7 +53,7 @@
       </div>
     </div>
     <div>
-      <%= render "static_pages/user_posts" %>
+      <%= render partial: "static_pages/user_posts", locals: { user: @user, path: user_posts_path(current_user.id) } %>
     </div>
   </div>
 <% end %>

@@ -1,10 +1,7 @@
 
-<%= turbo_frame_tag "middle-column" do %>
+<%= turbo_frame_tag "middle-column", data: { turbo_action: "advance" } do %>
   <div class="column-middle">
-    <%= form_with model: @post, url: post_path(@post) do |form| %>
-      <%= form.hidden_field :user_id, value: current_user.id %>
-      <%= form.text_area :post_content, placeholder: "Edit your post...", class: "post-box" %>
-      <%= form.submit class: "btn btn-primary post-button" %>
+    <%= render partial: "posts/text_box", locals: { model: @post, url: post_path(@post), 
+    scope: false, content: :post_content, placeholder: "", path: params[:path] } %>
   </div>
-  <% end %>
 <% end %>

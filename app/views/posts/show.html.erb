@@ -1,32 +1,21 @@
 <%= turbo_frame_tag "middle-column" do %>
 
-  <% flash.each do |type, msg| %>
-    <div class="alert alert-secondary">
-      <%= msg %>
-      <% if @post %>
-        <% @post.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render "layouts/flash_message" %>
 
   <div class="column-middle">
     <div class="post shadow shadow-intensity-xl mt-3">
-      <%= render partial: "posts/post_header", locals: { post: @post } %>
+      <%= render partial: "posts/post_header", locals: { post: @post, path: post_path(@post) } %>
       <hr class="my-2">
       <%= render partial: "posts/post_content", locals: { post: @post } %>
       <hr class="my-2">
-      <%= render partial: "posts/post_footer", locals: { post: @post } %>
+      <%= render partial: "posts/post_footer", locals: { post: @post, path: post_path(@post) } %>
       <%= render partial: "posts/comments", locals: { post: @post } %>
       <hr class="my-2">
       <div>
-        <%= form_with model: @comment, scope: :comment, url: post_comments_path(@post) do |form| %>
-          <%= form.hidden_field :user_id, value: current_user.id %>
-          <%= form.text_area :comment_content, placeholder: "Write a comment...", class: "post-box" %>
-          <%= form.submit "Post", class: "btn btn-primary post-button" %>
-        <% end %>
+        <%= render partial: "posts/text_box", locals: { model: @comment, url: post_comments_path(@post), 
+        scope: :comment, content: :comment_content, placeholder: "Write a comment..." } %>
       </div>
     </div>
   </div>
+  
 <% end %>

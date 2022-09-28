@@ -1,57 +1,8 @@
 
   <div class="content">
-    <div class="left-column column shadow shadow-primary shadow-intensity-lg">
-      <ul>
-        <li><%= link_to "Timeline", posts_path%><br></li>
-        <li><%= link_to "Profile", user_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
-        <li><%= link_to "Edit Profile", edit_user_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
-        <li><%= link_to "Friend Requests", invitations_path, data: { turbo_frame: "middle-column"} %></li>
-        <li><%= link_to "Find Friends", users_path, data: { turbo_frame: "middle-column"} %></li>
-        <li><%= link_to "My Friends", invitation_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
-        <li><%= link_to "My Posts", user_posts_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
-        <li><%= link_to "Liked Posts", user_likes_path(current_user.id), data: { turbo_frame: "middle-column"} %></li>
-      </ul>
-    </div>
+    <%= render "posts/left_column" %>
 
+    <%= render "posts/middle_column" %>
 
-    <%= turbo_frame_tag "middle-column" do %>
-
-      <% flash.each do |type, msg| %>
-        <div class="alert alert-secondary">
-          <%= msg %>
-          <% if @post %>
-            <% @post.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
-
-      <div class="column-middle">
-        <%= form_with model: @post, url: posts_path, scope: :post do |form| %>
-          <%= form.hidden_field :user_id, value: current_user.id %>
-          <%= form.text_area :post_content, placeholder: "What's on your mind?", class: "post-box" %>
-          <%= form.submit "Post", class: "btn btn-primary post-button" %>
-        <% end %>
-
-        <%= render partial: "posts/text_box", locals: { model: @post, url: posts_path, scope: :post, content: :post_content, placeholder: "What's on your mind?" } %>
-      
-        <% if @friends_posts %>
-          <%= render partial: "post_card", locals: { posts: @friends_posts } %>
-        <% end %>
-      </div>
-    <% end %>
-
-
-    <div class="right-column column shadow shadow-primary shadow-intensity-lg">
-    <p class="fs-5">People  you may know</p>
-      <% User.not_friends(current_user).each do |user| %>
-        <%= link_to user_path(user), class: "text-decoration-none text-secondary", data: { turbo_frame: "middle-column"} do %>
-          <div class="px-3 pt-3">
-            <%= image_tag user_avatar(user), class: "rounded-circle avatar-small" %>
-            <%= user.full_name %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+    <%= render "posts/right_column" %>
   </div>

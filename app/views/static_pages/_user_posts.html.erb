@@ -1,4 +1,4 @@
 
 <% if @user_posts %>
-  <%= render partial: "posts/post_card", locals: { posts: @user_posts } %>
+  <%= render partial: "posts/post_card", locals: { posts: @user_posts, path: user_posts_path(current_user.id) } %>
 <% end %>

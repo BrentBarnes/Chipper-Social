@@ -1,11 +1,19 @@
 
 <%= turbo_frame_tag "middle-column" do%>
   <div class="column-middle">
-    <% @my_friends.each do |friend| %>
-      <% invitation = Invitation.find_invitation(current_user.id, friend.id) %>
-      <%= friend.full_name %>
-      <%= button_to "Unfriend", invitation_path(invitation), method: :delete, class: "btn btn-danger" %>
-      <br>
+    <% if @my_friends.any? %>
+      <% @my_friends.each do |friend| %>
+        <% invitation = Invitation.find_invitation(current_user.id, friend.id) %>
+        <div class="d-flex">
+          <%= render partial: "users/avatar_and_name", locals: { user: friend } %>
+          <%= button_to "Unfriend", invitation_path(invitation), method: :delete, class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    <% else %>
+      <div>
+        <p class="fs-2">You haven't made any friends yet!</p>
+        <%= link_to "Try finding some friends here!", users_path, class: "btn btn-success" %>
+      </div>
     <% end %>
   </div>
 <% end %>
