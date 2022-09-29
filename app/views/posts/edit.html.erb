@@ -1,7 +1,7 @@
 
 <%= turbo_frame_tag "middle-column" do %>
   <div class="column-middle">
-    <%= turbo_frame_tag "edit-text-box" do %>
+    <%= turbo_frame_tag dom_id(@post, "edit-text-box") do %>
       <%= render partial: "posts/text_box", locals: { model: @post, url: post_path(@post), 
       scope: false, content: :post_content, placeholder: "" } %>
     <% end %>
