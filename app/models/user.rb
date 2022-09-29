@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def self.not_friends(current_user)
-    users = User.all.shuffle.first(4)
+    users = User.all.shuffle.first(10)
     not_friends_list = []
 
     users.each do |user|

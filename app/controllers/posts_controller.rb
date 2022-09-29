@@ -28,7 +28,7 @@ class PostsController < ApplicationController
       redirect_to posts_path
     else
       flash[:notice] = "Your post was unable to be submitted."
-      redirect_to root_path
+      redirect_to posts_path
     end
   end
   

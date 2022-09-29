@@ -91,3 +91,4 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem 'figaro'
 gem 'pry'
 gem 'factory_bot'
+gem 'faker'

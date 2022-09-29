@@ -19,7 +19,7 @@
   
   <div class="d-flex">
     <% if post.user_id == current_user.id %>
-      <%= link_to edit_post_path(post), class: "pe-2", method: :edit, data: { turbo_frame: "edit-text-box"} do %>
+      <%= link_to edit_post_path(post), class: "pe-2", method: :edit, data: { turbo_frame: "edit-text-box" } do %>
         <i class="fa-regular fa-pen-to-square fa-lg"></i>
       <% end %>
       <%= link_to post_path(post), data: { turbo_method: :delete } do %>
