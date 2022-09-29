@@ -1,4 +1,67 @@
 
 <% if @user_posts %>
-  <%= render partial: "posts/post_card", locals: { posts: @user_posts, path: user_posts_path(current_user.id) } %>
+  <% @user_posts.each do |post| %>
+    <div class="card bg-light mt-3">
+
+      <div class="card-header">
+        <div class="post-header d-flex">
+          <div>
+            <%= link_to user_path(post.user), class: "post-avatar", data: { turbo_frame: "middle-column"} do %>
+              <%= image_tag user_avatar(post.user), class: "rounded-circle avatar-small" %>
+            <% end %>
+          </div>
+
+          <div class="flex-grow-1 ms-2">
+            <div class="d-flex flex-column">
+              <div>
+                <%= link_to post.user.full_name, user_path(post.user_id), class: "text-decoration-none post-name" %>
+              </div>
+              <div class="text-muted">
+                <%= post.created_at.strftime("%B %e %Y") %>
+              </div>
+            </div>
+          </div>
+          
+          <div class="d-flex">
+            <% if post.user_id == current_user.id %>
+              <%= link_to edit_post_path(post, view: "static_pages#user_posts"), class: "pe-2", method: :edit, data: { turbo_frame: "edit-text-box"} do %>
+                <i class="fa-regular fa-pen-to-square fa-lg"></i>
+              <% end %>
+              <%= link_to post_path(post, view: "static_pages#user_posts"), data: { turbo_method: :delete } do %>
+                <i class="fa-regular fa-trash-can fa-lg"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <%= render partial: "posts/post_content", locals: { post: post } %>
+      </div>
+
+      <div class="card-footer">
+        <div class="post-footer d-flex">
+          <div>
+            <% pre_like = post.likes.find { |like| like.user_id == current_user.id } %>
+            <% if pre_like %>
+              <%= link_to post_like_path(post, pre_like, view: "static_pages#user_posts"), data: { turbo_method: :delete } do %>
+                <i class="fa-solid fa-thumbs-up fa-lg"></i>
+              <% end %>
+            <% else %>
+              <%= link_to post_likes_path(post, view: "static_pages#user_posts"), data: { turbo_method: :post } do %>
+                <i class="fa-regular fa-thumbs-up fa-lg"></i>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="flex-grow-1 post-like-count ps-2">
+            <%= post.likes.count %>
+          </div>
+          <div>
+            <%= link_to "Comment (#{post.comments.count})", post_path(post), class: "text-decoration-none" %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
 <% end %>

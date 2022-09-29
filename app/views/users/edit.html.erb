@@ -1,47 +1,42 @@
 
 <%= turbo_frame_tag "middle-column" do %>
   <div class="column-middle">
-    <%= form_with model: @user, url: user_path(@user), html: { method: :put }, data: { turbo: true } do |f| %>
-      <div class="field">
-        <div class="row">
-          <div class="col-sm-4">
-            <%= image_tag user_avatar(@user), class: "rounded-circle avatar-medium" %>
-          </div>
-          <div class="col-sm-8">
-            <%= f.label :avatar %><br />
-            <%= f.file_field :avatar %>
-          </div>
+    <div class="position-absolute top-50 start-50 translate-middle rounded-4">
+      <%= form_with model: @user, url: user_path(@user), html: { method: :put }, data: { turbo: true } do |f| %>
+        <div class="field">
+          <%= image_tag user_avatar(@user), class: "rounded-circle avatar-medium" %>
         </div>
-      </div>
-    
-      <div class="field">
-        <%= f.label :full_name %><br />
-        <%= f.text_field :full_name %>
-      </div>
-    
-      <div class="field">
-        <%= f.label :location %><br />
-        <%= f.text_field :location %>
-      </div>
-
-      <div class="field">
-        <%= f.label :education %><br />
-        <%= f.text_field :education %>
-      </div>
-
-      <div class="field">
-        <%= f.label :occupation %><br />
-        <%= f.text_field :occupation %>
-      </div>
-
-      <div class="field">
-        <%= f.label :birthday %><br />
-        <%= f.date_field :birthday %>
-      </div>
-    
-      <div class="actions">
-        <%= f.submit "Update" %>
-      </div>
-    <% end %>
+        <div class="col-sm-8">
+          <%= f.label :avatar %><br />
+          <%= f.file_field :avatar %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :full_name %><br />
+          <%= f.text_field :full_name %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :location %><br />
+          <%= f.text_field :location %>
+        </div>
+        <div class="field">
+          <%= f.label :education %><br />
+          <%= f.text_field :education %>
+        </div>
+        <div class="field">
+          <%= f.label :occupation %><br />
+          <%= f.text_field :occupation %>
+        </div>
+        <div class="field">
+          <%= f.label :birthday %><br />
+          <%= f.date_field :birthday %>
+        </div>
+      
+        <div class="actions">
+          <%= f.submit "Update" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

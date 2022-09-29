@@ -15,7 +15,15 @@ class LikesController < ApplicationController
   def create
     @object.likes.create(user_id: current_user.id)
     if params[:post_id].present?
-      redirect_back(fallback_location: post_path(@object.id))
+      if params[:view] == "posts#show"
+        redirect_to post_path(@object), status: :see_other
+      elsif params[:view] == "user#show"
+        redirect_to user_path(@object.user), status: :see_other
+      elsif params[:view] == "static_pages#user_posts"
+        redirect_to user_posts_path(@object.user), status: :see_other
+      else
+        redirect_to posts_path, status: :see_other
+      end
     else
       redirect_to post_path(@object.id)
     end
@@ -24,7 +32,17 @@ class LikesController < ApplicationController
   def destroy
     @like.destroy
     if params[:post_id].present?
-      redirect_back(fallback_location: post_path(@object.id))
+      if params[:view] == "posts#show"
+        redirect_to post_path(@object), status: :see_other
+      elsif params[:view] == "user#show"
+        redirect_to user_path(@object.user), status: :see_other
+      elsif params[:view] == "static_pages#user_posts"
+        redirect_to user_posts_path(@object.user), status: :see_other
+      elsif params[:view] == "likes#index"
+        redirect_to user_likes_path(@object.user), status: :see_other
+      else
+        redirect_to posts_path, status: :see_other
+      end
     else
       redirect_to post_path(@object.id)
     end

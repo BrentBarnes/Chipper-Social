@@ -8,7 +8,28 @@
       <hr class="my-2">
       <%= render partial: "posts/post_content", locals: { post: @post } %>
       <hr class="my-2">
-      <%= render partial: "posts/post_footer", locals: { post: @post, path: post_path(@post) } %>
+      
+      <div class="post-footer d-flex">
+        <div>
+          <% pre_like = @post.likes.find { |like| like.user_id == current_user.id } %>
+          <% if pre_like %>
+            <%= link_to post_like_path(@post, pre_like, view: "posts#show"), data: { turbo_method: :delete } do %>
+              <i class="fa-solid fa-thumbs-up fa-lg"></i>
+            <% end %>
+          <% else %>
+            <%= link_to post_likes_path(@post, view: "posts#show"), data: { turbo_method: :post } do %>
+              <i class="fa-regular fa-thumbs-up fa-lg"></i>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="flex-grow-1 post-like-count ps-2">
+          <%= @post.likes.count %>
+        </div>
+        <div>
+          <%= link_to "Comment (#{@post.comments.count})", post_path(@post), class: "text-decoration-none" %>
+        </div>
+      </div>
+
       <%= render partial: "posts/comments", locals: { post: @post } %>
       <hr class="my-2">
       <div>

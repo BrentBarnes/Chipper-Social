@@ -1,15 +1,13 @@
 
 <%= turbo_frame_tag "middle-column" do %>
   <div class="column-middle">
-    <div class="column-middle">
-      <% @my_invitations.each do |invitation| %>
-        <% requester = User.find(invitation.user_id) %>
-        <div class="request d-flex">
-          <%= render partial: "users/avatar_and_name", locals: { user: requester } %>
-          <%= button_to "Accept", invitation_path(invitation.id, :response => "accepted", :invitation_id => invitation.id), method: :patch, class: "btn btn-primary" %>
-          <%= button_to "Decline", invitation_path(invitation.id, :response => "declined", :invitation_id => invitation.id), method: :patch, class: "btn btn-danger" %>
-        </div>
-      <% end %>
-    </div>
+    <% @my_invitations.each do |invitation| %>
+      <% requester = User.find(invitation.user_id) %>
+      <div class="d-flex align-items-center">
+        <%= render partial: "users/avatar_and_name", locals: { user: requester } %>
+        <%= button_to "Accept", invitation_path(invitation.id, :response => "accepted", :invitation_id => invitation.id), method: :patch, class: "btn btn-primary me-2 mt-2" %>
+        <%= button_to "Decline", invitation_path(invitation.id, :response => "declined", :invitation_id => invitation.id), method: :patch, class: "btn btn-danger mt-2" %>
+      </div>
+    <% end %>
   </div>
 <% end %>

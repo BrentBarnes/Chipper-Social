@@ -1,2 +1,4 @@
 
-<%= post.post_content %>
+<%= turbo_frame_tag "edit-text-box" do %>
+  <%= post.post_content %>
+<% end %>

@@ -14,6 +14,7 @@ html, body {
   flex-direction: column;
   overflow: hidden;
   position: relative;
+  background-color: #f7f7f9;
 }
 
 .left-column,
@@ -23,6 +24,10 @@ html, body {
   height: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
+}
+
+.fa-icon {
+  color: #78c2ad;
 }
 
 ul {
@@ -66,15 +71,30 @@ textarea {
 }
 
 .post-box {
+  color: rgb(101, 100, 114);
   width: 100%;
   height: 5rem;
   resize: none;
-  border-radius: 25px;
-  border: 1px solid black;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  /* border-radius: 25px; */
   padding: .5rem;
   overflow: auto;
   outline: none;
   resize: none;
+  z-index: -1;
+}
+
+.text-submit {
+  height: 100%;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: #78c2ad;
+  color: white;
+  border: 0px;
+  padding: 1rem;
 }
 
 .post {
@@ -94,16 +114,30 @@ hr {
 }
 
 .avatar-small {
-  height: 4rem;
-  width: 4rem;
+  height: 3rem;
+  width: 3rem;
 }
 
 .avatar-medium {
-  height: 10rem;
-  width: 10rem;
+  height: 9rem;
+  width: 9rem;
 }
 
 .avatar-large {
-  height: 30rem;
-  width: 30rem;
+  height: 20rem;
+  width: 20em;
+}
+
+.hidden {
+  display: none;
+}
+
+.request {
+  background-color: #696969;
+  color: aliceblue;
+  padding: .25rem;
+  padding-left: .50rem;
+  padding-right: .50rem;
+  border-radius: 15px;
+  cursor: default;
 }

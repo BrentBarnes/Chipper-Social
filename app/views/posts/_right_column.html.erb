@@ -1,6 +1,7 @@
 
 <div class="right-column column shadow shadow-primary shadow-intensity-lg">
-<p class="fs-5">People  you may know</p>
+<p class="fs-3 mx-3 mt-3 text-center">People  you may know</p>
+<hr class="mx-4">
   <% User.not_friends(current_user).each do |user| %>
     <%= render partial: "users/avatar_and_name", locals: { user: user } %>
   <% end %>

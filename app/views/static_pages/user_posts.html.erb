@@ -1,6 +1,15 @@
 
 <%= turbo_frame_tag "middle-column" do %>
   <div class="column-middle">
-    <%= render partial: "user_posts", locals: { user: current_user } %>
+    <% if @user_posts.any? %>
+      <div class="column-middle">
+        <%= render partial: "user_posts", locals: { user: current_user } %>
+      </div>
+    <% else %>
+      <div class="d-flex flex-column align-items-center">
+        <p class="fs-2">You haven't made any posts yet!</p>
+        <%= link_to "Try making your first post here!", posts_path, class: "btn btn-success" %>
+      </div>
+    <% end %>
   </div>
 <% end %>

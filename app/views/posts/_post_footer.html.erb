@@ -1,14 +1,18 @@
 
-<div class="d-flex">
+<div class="post-footer d-flex">
   <div>
     <% pre_like = post.likes.find { |like| like.user_id == current_user.id } %>
     <% if pre_like %>
-      <%= button_to "Unlike", post_like_path(post, pre_like, path: path), method: :delete %>
+      <%= link_to post_like_path(post, pre_like), data: { turbo_method: :delete } do %>
+        <i class="fa-solid fa-thumbs-up fa-lg"></i>
+      <% end %>
     <% else %>
-      <%= button_to "Like", post_likes_path(post, path: path), method: :post %>
+      <%= link_to post_likes_path(post), data: { turbo_method: :post } do %>
+        <i class="fa-regular fa-thumbs-up fa-lg"></i>
+      <% end %>
     <% end %>
   </div>
-  <div class="flex-grow-1 post-like-count">
+  <div class="flex-grow-1 post-like-count ps-2">
     <%= post.likes.count %>
   </div>
   <div>

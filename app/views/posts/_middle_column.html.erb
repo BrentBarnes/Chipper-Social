@@ -5,7 +5,7 @@
     <%= render partial: "posts/text_box", locals: { model: @post, url: posts_path, 
     scope: :post, content: :post_content, placeholder: "What's on your mind?" } %>
     <% if @friends_posts %>
-      <%= render partial: "post_card", locals: { posts: @friends_posts, path: posts_path } %>
+      <%= render partial: "post_card", locals: { posts: @friends_posts } %>
     <% end %>
   </div>
 <% end %>

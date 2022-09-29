@@ -46,7 +46,15 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_back(fallback_location: users_path)
+    if params[:view] == "user#show"
+      redirect_to user_path(@post.user), status: :see_other
+    elsif params[:view] == "static_pages#user_posts"
+      redirect_to user_posts_path(@post.user), status: :see_other
+    elsif params[:view] == "likes#index"
+      redirect_to user_likes_path(@post.user), status: :see_other
+    else
+      redirect_to posts_path, status: :see_other
+    end
   end
 
   private
