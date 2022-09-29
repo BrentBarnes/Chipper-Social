@@ -13,8 +13,9 @@ RSpec.describe 'Edit post', type: :feature do
     expect(page).to have_content("Test post")
 
     find('.fa-pen-to-square').click
-    fill_in "Edit your post...", with: 'Edited test post'
-    click_on 'Post'
+
+    find('.edit-post-box').fill_in with: "Edited test post"
+    find('.edit-submit').click
     expect(page).to have_content('Edited test post')
   end
 
@@ -26,7 +27,7 @@ RSpec.describe 'Edit post', type: :feature do
     expect(page).to have_content("Test post")
 
     find('.fa-pen-to-square').click
-    click_on 'Post'
+    find('.edit-submit').click
     expect(page).to have_content("Test post")
   end
 end

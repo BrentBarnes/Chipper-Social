@@ -1,15 +1,16 @@
 
 <%= turbo_frame_tag "middle-column" do %>
   <div class="column-middle">
+
     <%= turbo_frame_tag dom_id(@post, "edit-text-box") do %>
       <div>
         <%= form_with model: @post, class: "d-flex", url: post_path(@post) do |form| %>
           <div class="flex-grow-1">
             <%= form.hidden_field :user_id, value: current_user.id %>
-            <%= form.text_area :post_content, placeholder: "Edit your post", class: "post-box shadow shadow-primary shadow-intensity-lg px-3" %>
+            <%= form.text_area :post_content, placeholder: "Edit your post", class: "edit-post-box post-box shadow shadow-primary shadow-intensity-lg px-3" %>
           </div>
           <div>
-            <%= form.submit "Post", class: "text-submit shadow shadow-primary shadow-intensity-lg" %>
+            <%= form.submit "Post", class: "edit-submit text-submit shadow shadow-primary shadow-intensity-lg" %>
           </div>
         <% end %>
       </div>
