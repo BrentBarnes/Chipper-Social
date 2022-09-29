@@ -18,7 +18,7 @@ RSpec.describe 'Unlike comment', type: :feature do
     comment_like_count = find('.comment-like-count')
     expect(comment_like_count).to have_content('1')
 
-    click_on 'Unlike'
+    find('.comment-unlike-btn').click
     expect(comment_like_count).to have_content('0')
   end
 end

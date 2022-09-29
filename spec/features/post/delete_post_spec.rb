@@ -13,7 +13,7 @@ RSpec.describe 'Delete post', type: :feature do
     visit posts_path
     expect(page).to have_content("Test post")
 
-    click_on 'delete'
+    find('.fa-trash-can').click
     expect(page).to_not have_content("Test post")
   end
 end

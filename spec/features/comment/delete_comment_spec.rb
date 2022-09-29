@@ -13,7 +13,7 @@ RSpec.describe 'Delete comment', type: :feature do
     expect(page).to have_content("Test post")
     click_on 'Comment'
     expect(page).to have_content("Test comment")
-    click_on 'delete'
+    find('.comment-delete-btn').click
     expect(page).to_not have_content("Test comment")
     sleep 2
   end

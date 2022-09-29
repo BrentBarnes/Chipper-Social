@@ -12,7 +12,7 @@ RSpec.describe 'Like post', type: :feature do
     visit posts_path
     expect(page).to have_content("Test post")
 
-    click_on 'Like'
+    find('.fa-thumbs-up').click
     like_count = find('.post-like-count')
     expect(like_count).to have_content('1')
   end

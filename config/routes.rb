@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
+  # root "posts#index"
   root "users/sessions#new"
   get "/static_pages/:id", to: "static_pages#user_posts", as: 'user_posts'
   get "/static_pages", to: "static_pages#about", as: 'about'

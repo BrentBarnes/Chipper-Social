@@ -14,7 +14,7 @@
           <% end %>
 
           <% if comment.user_id == current_user.id %>
-            <%= link_to post_comment_path(@post, comment), data: { turbo_method: :delete } do %>
+            <%= link_to post_comment_path(@post, comment), class: "comment-delete-btn", data: { turbo_method: :delete } do %>
               <i class="fa-regular fa-trash-can fa-lg"></i>
             <% end %>
           <% end %>
@@ -28,11 +28,11 @@
           <div>
             <% pre_like = comment.likes.find { |like| like.user_id == current_user.id } %>
             <% if pre_like %>
-              <%= link_to comment_like_path(comment, pre_like), class: "comment-unlike-btn", data: { turbo_method: :delete } do %>
+              <%= link_to comment_like_path(comment, pre_like, view: "comment"), class: "comment-unlike-btn", data: { turbo_method: :delete } do %>
                 <i class="fa-solid fa-thumbs-up fa-lg"></i>
               <% end %>
             <% else %>
-              <%= link_to comment_likes_path(comment), class: "comment-like-btn", data: { turbo_method: :post } do %>
+              <%= link_to comment_likes_path(comment, view: "comment"), class: "comment-like-btn", data: { turbo_method: :post } do %>
                 <i class="fa-regular fa-thumbs-up fa-lg"></i>
               <% end %>
             <% end %>

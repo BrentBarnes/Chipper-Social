@@ -15,7 +15,7 @@ RSpec.describe 'Unlike post', type: :feature do
     like_count = find('.post-like-count')
     expect(like_count).to have_content('1')
 
-    click_on 'Unlike'
+    find('.fa-thumbs-up').click
     expect(like_count).to have_content('0')
   end
 end

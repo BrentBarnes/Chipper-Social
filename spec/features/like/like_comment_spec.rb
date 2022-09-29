@@ -14,7 +14,7 @@ RSpec.describe 'Like comment', type: :feature do
     
     click_on 'Comment'
     expect(page).to have_content("Test comment")
-
+    
     find('.comment-like-btn').click
     comment_like_count = find('.comment-like-count')
     expect(comment_like_count).to have_content('1')

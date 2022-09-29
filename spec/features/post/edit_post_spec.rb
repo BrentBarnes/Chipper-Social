@@ -12,9 +12,9 @@ RSpec.describe 'Edit post', type: :feature do
     visit posts_path
     expect(page).to have_content("Test post")
 
-    click_on 'edit'
+    find('.fa-pen-to-square').click
     fill_in "Edit your post...", with: 'Edited test post'
-    click_on 'Update Post'
+    click_on 'Post'
     expect(page).to have_content('Edited test post')
   end
 
@@ -25,8 +25,8 @@ RSpec.describe 'Edit post', type: :feature do
     visit posts_path
     expect(page).to have_content("Test post")
 
-    click_on 'edit'
-    click_on 'Update Post'
+    find('.fa-pen-to-square').click
+    click_on 'Post'
     expect(page).to have_content("Test post")
   end
 end

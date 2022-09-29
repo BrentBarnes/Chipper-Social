@@ -24,6 +24,8 @@ class LikesController < ApplicationController
       else
         redirect_to posts_path, status: :see_other
       end
+    elsif params[:comment_id].present?
+      redirect_to post_path(@object.post), status: :see_other
     else
       redirect_to post_path(@object.id)
     end
@@ -43,6 +45,8 @@ class LikesController < ApplicationController
       else
         redirect_to posts_path, status: :see_other
       end
+    elsif params[:comment_id].present?
+      redirect_to post_path(@object.post), status: :see_other
     else
       redirect_to post_path(@object.id)
     end

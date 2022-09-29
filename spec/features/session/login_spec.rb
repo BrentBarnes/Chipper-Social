@@ -8,7 +8,7 @@ RSpec.describe 'Logging in', type: :feature do
     fill_in 'user_email', with: 'Dan@gmail.com'
     fill_in 'user_password', with: '123456'
     click_on 'Log in'
-    expect(page).to have_content('Signed in successfully.')
+    expect(page).to have_content('People you may know')
   end
 
   scenario 'invalid inputs' do

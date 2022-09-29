@@ -14,19 +14,7 @@ RSpec.describe 'Create comment', type: :feature do
 
     click_on 'Comment'
     fill_in 'Write a comment...', with: 'Test comment'
-    click_on 'Save'
+    click_on 'Post'
     expect(page).to have_content('Test comment')
-  end
-
-  scenario 'invalid inputs' do
-    user = create(:user)
-    post = create(:post)
-    sign_in user
-    visit posts_path
-    expect(page).to have_content("Test post")
-
-    click_on 'Comment'
-    click_on 'Save'
-    expect(page).to have_content('Your comment could not be posted')
   end
 end
