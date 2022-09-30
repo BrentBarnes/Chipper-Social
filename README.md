@@ -19,5 +19,5 @@ The Ruby on Rails curriculum and course framework can be found [HERE](https://ww
 
 <figure>
   <figcaption>Chipper Sign In Page</figcaption>
-  <img src="images/screenshots/chipper1.png" alt="" width="600" height="300">
+  <img src="screenshots/chipper1.png" alt="" width="600" height="300">
 </figure>
