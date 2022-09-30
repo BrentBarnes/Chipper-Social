@@ -17,6 +17,30 @@ html, body {
   background-color: #f7f7f9;
 }
 
+.nav {
+  background-color: #78c2ad;
+}
+
+.link {
+  color: #78c2ad;
+}
+
+.link:hover {
+  color: #f3969a;
+}
+
+.light-blue {
+  color: #6cc3d5;
+}
+
+.light-yellow {
+color: #ffce67;
+}
+
+.light-yellow:hover {
+color: #b89752;
+}
+
 .left-column,
 .middle-column,
 .right-column {
@@ -95,6 +119,10 @@ textarea {
   color: white;
   border: 0px;
   padding: 1rem;
+}
+
+.text-submit:hover {
+  background-color: #609b8a;
 }
 
 .post {

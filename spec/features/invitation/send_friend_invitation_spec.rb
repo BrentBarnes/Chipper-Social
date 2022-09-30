@@ -13,6 +13,7 @@ RSpec.describe 'Friend Request', type: :feature do
     visit posts_path
     click_on 'Find Friends'
     click_on 'Add Friend'
-    expect(page).to have_content('Request Pending')
+    
+    expect(page).to have_content('Request Sent')
   end
 end

@@ -1,11 +1,13 @@
 
-<div class="position-absolute top-50 start-50 translate-middle">
-  <div class="d-flex flex-column align-items-center">
-    <div class="mb-2">
-      Created by Brent Barnes as part of <a href="https://www.theodinproject.com" target="_blank">The Odin Project</a> curriculum.<br>
-    </div>
-    <div>
-      View source code on <a href="https://github.com/BrentBarnes/Odin-Facebook" target="_blank">Github</a>.
+<%= turbo_frame_tag "middle-column", data: { turbo_action: 'advance'} do %>
+  <div class="position-absolute top-50 start-50 translate-middle">
+    <div class="d-flex flex-column align-items-center">
+      <div class="mb-2">
+        Created by Brent Barnes as part of <a href="https://www.theodinproject.com" target="_blank" class="link text-decoration-none">The Odin Project</a> curriculum.<br>
+      </div>
+      <div>
+        View source code on <a href="https://github.com/BrentBarnes/Odin-Facebook" target="_blank" class="link text-decoration-none">Github</a>.
+      </div>
     </div>
   </div>
-</div>
+<% end %>

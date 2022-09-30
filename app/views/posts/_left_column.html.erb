@@ -1,35 +1,35 @@
 
 <div class="left-column column shadow shadow-primary shadow-intensity-lg d-flex flex-column pt-4">
   <ul>
-    <%= link_to posts_path, class: "text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
+    <%= link_to posts_path, class: "link text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
       <i class="fa-regular fa-newspaper fa-icon"></i>
       <div class="ps-2">Timeline</div>
     <% end %>
-    <%= link_to user_path(current_user.id), class: "text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
+    <%= link_to user_path(current_user.id), class: "link text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
       <i class="fa-regular fa-user fa-icon"></i>
       <div class="ps-2">Profile</div>
     <% end %>
-    <%= link_to edit_user_path(current_user.id), class: "text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
+    <%= link_to edit_user_path(current_user.id), class: "link text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
       <i class="fa-solid fa-user-pen fa-icon"></i>
       <div class="ps-2">Edit Profile</div>
     <% end %>
-    <%= link_to invitations_path, class: "text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
+    <%= link_to invitations_path, class: "link text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
       <i class="fa-solid fa-envelope-open-text fa-icon"></i>
       <div class="ps-2">Friend Requests</div>
     <% end %>
-    <%= link_to users_path, class: "text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
+    <%= link_to users_path, class: "link text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
       <i class="fa-regular fa-eye fa-icon"></i>
       <div class="ps-2">Find Friends</div>
     <% end %>
-    <%= link_to invitation_path(current_user.id), class: "text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
+    <%= link_to invitation_path(current_user.id), class: "link text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
       <i class="fa-solid fa-people-line fa-icon"></i>
       <div class="ps-2">My Friends</div>
     <% end %>
-    <%= link_to user_posts_path(current_user.id), class: "text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
+    <%= link_to user_posts_path(current_user.id), class: "link text-decoration-none fs-2 d-flex align-items-center mb-1", data: { turbo_frame: "middle-column"} do %>
       <i class="fa-regular fa-file-lines fa-icon"></i>
       <div class="ps-2">My Posts</div>
     <% end %>
-    <%= link_to user_likes_path(current_user.id), class: "text-decoration-none fs-2 d-flex align-items-center", data: { turbo_frame: "middle-column"} do %>
+    <%= link_to user_likes_path(current_user.id), class: "link text-decoration-none fs-2 d-flex align-items-center", data: { turbo_frame: "middle-column"} do %>
       <i class="fa-regular fa-heart fa-icon"></i>
       <div class="ps-2">Liked Posts</div>
     <% end %>

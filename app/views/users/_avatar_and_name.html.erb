@@ -2,6 +2,6 @@
 <%= link_to user_path(user), class: "text-decoration-none", data: { turbo_frame: "middle-column"} do %>
   <div class="px-4 pt-2 d-flex align-items-center">
     <%= image_tag user_avatar(user), class: "rounded-circle avatar-small me-2" %>
-    <div class="fs-4"><%= user.full_name %></div>
+    <div class="link fs-4"><%= user.full_name %></div>
   </div>
 <% end %>

@@ -4,11 +4,11 @@
     <% pre_like = post.likes.find { |like| like.user_id == current_user.id } %>
     <% if pre_like %>
       <%= link_to post_like_path(post, pre_like), data: { turbo_method: :delete } do %>
-        <i class="fa-solid fa-thumbs-up fa-lg"></i>
+        <i class="link fa-solid fa-thumbs-up fa-lg"></i>
       <% end %>
     <% else %>
       <%= link_to post_likes_path(post), data: { turbo_method: :post } do %>
-        <i class="fa-regular fa-thumbs-up fa-lg"></i>
+        <i class="link fa-regular fa-thumbs-up fa-lg"></i>
       <% end %>
     <% end %>
   </div>
@@ -16,6 +16,6 @@
     <%= post.likes.count %>
   </div>
   <div>
-    <%= link_to "Comment (#{post.comments.count})", post_path(post), class: "text-decoration-none" %>
+    <%= link_to "Comment (#{post.comments.count})", post_path(post), class: "link text-decoration-none" %>
   </div>
 </div>

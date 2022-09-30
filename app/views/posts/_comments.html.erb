@@ -6,16 +6,18 @@
       <div class="card p-2 my-2">
 
         <div class="d-flex mb-1">
-          <%= link_to user_path(current_user), class: "text-decoration-none flex-grow-1", data: { turbo_frame: "middle-column"} do %>
+          <%= link_to user_path(current_user), class: "link text-decoration-none", data: { turbo_frame: "middle-column"} do %>
             <div class="pt-2 d-flex align-items-center">
               <%= image_tag user_avatar(current_user), class: "rounded-circle avatar-extra-small me-2" %>
               <div class="fs-6"><%= current_user.full_name %></div>
             </div>
           <% end %>
 
+          <div class="flex-grow-1"></div>
+
           <% if comment.user_id == current_user.id %>
             <%= link_to post_comment_path(@post, comment), class: "comment-delete-btn", data: { turbo_method: :delete } do %>
-              <i class="fa-regular fa-trash-can fa-lg"></i>
+              <i class="link fa-regular fa-trash-can fa-lg"></i>
             <% end %>
           <% end %>
         </div>
@@ -29,11 +31,11 @@
             <% pre_like = comment.likes.find { |like| like.user_id == current_user.id } %>
             <% if pre_like %>
               <%= link_to comment_like_path(comment, pre_like, view: "comment"), class: "comment-unlike-btn", data: { turbo_method: :delete } do %>
-                <i class="fa-solid fa-thumbs-up fa-lg"></i>
+                <i class="link fa-solid fa-thumbs-up fa-lg"></i>
               <% end %>
             <% else %>
               <%= link_to comment_likes_path(comment, view: "comment"), class: "comment-like-btn", data: { turbo_method: :post } do %>
-                <i class="fa-regular fa-thumbs-up fa-lg"></i>
+                <i class="link fa-regular fa-thumbs-up fa-lg"></i>
               <% end %>
             <% end %>
           </div>
