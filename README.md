@@ -58,7 +58,7 @@ The Ruby on Rails curriculum and course framework can be found [HERE](https://ww
 ### Screenshots
 <p float = 'left' >
 <figure>
-  <figcaption>Chipper Sign In Page</figcaption>
+  <figcaption>Chipper Log In Page</figcaption>
   <img src="screenshots/chipper1.png" alt="Chipper Sign In Page" width="600" height="300">
 </figure>
 <figure>
@@ -67,7 +67,7 @@ The Ruby on Rails curriculum and course framework can be found [HERE](https://ww
 </figure>
 <figure>
   <figcaption>Create, edit, delete, and like posts</figcaption>
-  <img src="screenshots/chipper3.png" alt="Post and edit posts" width="600" height="200">
+  <img src="screenshots/chipper3.png" alt="Post and edit posts" width="600" height="150">
 </figure>
 <figure>
   <figcaption>Comment on posts and like comments</figcaption>
@@ -91,7 +91,7 @@ The Ruby on Rails curriculum and course framework can be found [HERE](https://ww
 </figure>
 <figure>
   <figcaption>My friends</figcaption>
-  <img src="screenshots/chipper9.png" alt="My friends" width="400" height="200">
+  <img src="screenshots/chipper9.png" alt="My friends" width="450" height="250">
 </figure>
 </p>
 
