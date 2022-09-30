@@ -83,15 +83,15 @@ The Ruby on Rails curriculum and course framework can be found [HERE](https://ww
 </figure>
 <figure>
   <figcaption>Find friends you haven't connected with yet</figcaption>
-  <img src="screenshots/chipper7.png" alt="Find friends" width="600" height="300">
+  <img src="screenshots/chipper7.png" alt="Find friends" width="400" height="200">
 </figure>
 <figure>
   <figcaption>Friend requests</figcaption>
-  <img src="screenshots/chipper8.png" alt="Friend requests" width="600" height="500">
+  <img src="screenshots/chipper8.png" alt="Friend requests" width="400" height="344">
 </figure>
 <figure>
   <figcaption>My friends</figcaption>
-  <img src="screenshots/chipper9.png" alt="My friends" width="600" height="300">
+  <img src="screenshots/chipper9.png" alt="My friends" width="400" height="200">
 </figure>
 </p>
 
