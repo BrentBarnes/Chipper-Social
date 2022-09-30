@@ -2,15 +2,15 @@ Rails.application.routes.draw do
   get 'comments/create'
   get 'comments/destroy'
   
-  devise_scope :user do
-    get '/sessions/user', to: 'devise/sessions#new'
-  end
-
   devise_for :users, controllers: { 
     registrations: 'users/registrations',
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+  end
 
   resources :users, only: [:show, :index, :edit, :update] do
     resources :likes, only: [:index]
