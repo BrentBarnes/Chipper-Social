@@ -6,9 +6,9 @@
       <div class="card p-2 my-2">
 
         <div class="d-flex mb-1">
-          <%= link_to user_path(@post.user), class: "text-decoration-none flex-grow-1", data: { turbo_frame: "middle-column"} do %>
+          <%= link_to user_path(current_user), class: "text-decoration-none flex-grow-1", data: { turbo_frame: "middle-column"} do %>
             <div class="pt-2 d-flex align-items-center">
-              <%= image_tag user_avatar(@post.user), class: "rounded-circle avatar-extra-small me-2" %>
+              <%= image_tag user_avatar(current_user), class: "rounded-circle avatar-extra-small me-2" %>
               <div class="fs-6"><%= current_user.full_name %></div>
             </div>
           <% end %>

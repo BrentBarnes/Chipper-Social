@@ -1,5 +1,5 @@
 
-<%= turbo_frame_tag "middle-column" do %>
+<%= turbo_frame_tag "middle-column", data: { turbo_action: "advance" } do %>
   <div class="column-middle">
     <div class="position-absolute top-50 start-50 translate-middle rounded-4">
       <%= form_with model: @user, url: user_path(@user), html: { method: :put }, data: { turbo: true } do |f| %>

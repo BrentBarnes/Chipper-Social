@@ -1,5 +1,5 @@
 
-<%= turbo_frame_tag "middle-column" do %>
+<%= turbo_frame_tag "middle-column", data: { turbo_action: "advance" } do %>
   <div class="column-middle">
 
     <%= turbo_frame_tag dom_id(@post, "edit-text-box") do %>

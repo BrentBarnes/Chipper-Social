@@ -1,13 +1,13 @@
 
-<%= turbo_frame_tag "middle-column" do %>
+<%= turbo_frame_tag "middle-column", data: { turbo_action: "advance" } do %>
   <div class="column-middle">
     <% User.not_friends(current_user).each do |user| %>
       <div class="d-flex align-items-center">
         <%= render partial: "users/avatar_and_name", locals: { user: user } %>
-        <% if Invitation.reacted?(current_user.id, user) %>
-          <div class="request mt-2">
-            Request Pending
-          </div>
+        <% if !Invitation.where(user_id: user.id, friend_id: current_user.id).empty? %>
+          <%= link_to "Request Received", invitations_path, class: "btn btn-warning" %>
+        <% elsif !Invitation.where(user_id: current_user.id, friend_id: user.id).empty? %>
+          <div class="request">Request Sent</div>
         <% else %>
           <%= button_to "Add Friend", invitations_path(:user => user), class: "btn btn-primary" %>
         <% end %>

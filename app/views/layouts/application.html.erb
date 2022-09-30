@@ -18,7 +18,18 @@
   <body>
     <div class="body-container">
       <%= render "layouts/nav", class: "navbar" %>
-      <%= yield %>
+
+      <% if user_signed_in? %>
+        <div class="content">
+          <%= render "posts/left_column" %>
+
+          <%= yield %>
+
+          <%= render "posts/right_column" %>
+        </div>
+      <% else %>
+        <%= yield %>
+      <% end %>
     </div>
   </body>
 </html>
