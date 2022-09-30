@@ -2,7 +2,9 @@
 
 # Chipper Social
 
-This is the final project from [The Odin Project's](https://www.theodinproject.com) <strong>Ruby on Rails</strong> curriculum.  
+This is the final project from [The Odin Project's](https://www.theodinproject.com) <strong>Ruby on Rails</strong> curriculum.
+
+
 The original project can be found here: [Building Facebook](https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project)  
 The Ruby on Rails curriculum and course framework can be found [HERE](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails).
 
@@ -65,11 +67,11 @@ The Ruby on Rails curriculum and course framework can be found [HERE](https://ww
 </figure>
 <figure>
   <figcaption>Create, edit, delete, and like posts</figcaption>
-  <img src="screenshots/chipper3.png" alt="Post and edit posts" width="600" height="300">
+  <img src="screenshots/chipper3.png" alt="Post and edit posts" width="600" height="200">
 </figure>
 <figure>
   <figcaption>Comment on posts and like comments</figcaption>
-  <img src="screenshots/chipper4.png" alt="Comment on posts and like comments" width="600" height="300">
+  <img src="screenshots/chipper4.png" alt="Comment on posts and like comments" width="600" height="200">
 </figure>
 <figure>
   <figcaption>View user profiles</figcaption>
@@ -77,11 +79,11 @@ The Ruby on Rails curriculum and course framework can be found [HERE](https://ww
 </figure>
 <figure>
   <figcaption>Edit your own profile</figcaption>
-  <img src="screenshots/chipper6.png" alt="Edit your own profile" width="900" height="300">
+  <img src="screenshots/chipper6.png" alt="Edit your own profile" width="200" height="900">
 </figure>
 <figure>
   <figcaption>Find friends you haven't connected with yet</figcaption>
-  <img src="screenshots/chipper7.png" alt="Find friends" width="200" height="800">
+  <img src="screenshots/chipper7.png" alt="Find friends" width="600" height="300">
 </figure>
 <figure>
   <figcaption>Friend requests</figcaption>
