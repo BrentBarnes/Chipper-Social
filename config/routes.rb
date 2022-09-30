@@ -8,10 +8,6 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  devise_scope :user do
-    get 'login', to: 'users/sessions#new'
-  end
-
   resources :users, only: [:show, :index, :edit, :update] do
     resources :likes, only: [:index]
   end
@@ -27,8 +23,8 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
   
-  # root "posts#index"
-  root "users/sessions#new"
+  root "posts#index"
+  # root "users/sessions#new"
   get "/static_pages/:id", to: "static_pages#user_posts", as: 'user_posts'
   get "/static_pages", to: "static_pages#about", as: 'about'
 end
