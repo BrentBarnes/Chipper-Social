@@ -79,7 +79,7 @@ The Ruby on Rails curriculum and course framework can be found [HERE](https://ww
 </figure>
 <figure>
   <figcaption>Edit your own profile</figcaption>
-  <img src="screenshots/chipper6.png" alt="Edit your own profile" width="300" height="600">
+  <img src="screenshots/chipper6.png" alt="Edit your own profile" width="200" height="400">
 </figure>
 <figure>
   <figcaption>Find friends you haven't connected with yet</figcaption>
