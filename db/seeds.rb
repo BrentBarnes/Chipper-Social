@@ -28,7 +28,7 @@ i = 1
     password: 'demonstration', 
     password_confirmation: 'demonstration', 
     # avatar_url: Faker::Avatar.image,
-    avatar_url: "avatars/avatar#{i}",
+    avatar_url: "avatars/avatar#{i}.jpg",
     location: Faker::Address.state, 
     education: Faker::University.name, 
     occupation: Faker::Job.title,
