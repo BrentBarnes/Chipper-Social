@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get 'login', to: 'devise/sessions#new'
+    get 'login', to: 'users/sessions#new'
   end
 
   resources :users, only: [:show, :index, :edit, :update] do
