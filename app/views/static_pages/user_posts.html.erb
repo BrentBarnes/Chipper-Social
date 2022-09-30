@@ -2,7 +2,7 @@
 <%= turbo_frame_tag "middle-column", data: { turbo_action: "advance" } do %>
   <div class="column-middle">
     <% if @user_posts.any? %>
-      <div class="column-middle">
+      <div>
         <%= render partial: "user_posts", locals: { user: current_user } %>
       </div>
     <% else %>
