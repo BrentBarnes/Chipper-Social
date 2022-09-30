@@ -91,7 +91,7 @@ The Ruby on Rails curriculum and course framework can be found [HERE](https://ww
 </figure>
 <figure>
   <figcaption>My friends</figcaption>
-  <img src="screenshots/chipper9.png" alt="My friends" width="450" height="250">
+  <img src="screenshots/chipper9.png" alt="My friends" width="300" height="200">
 </figure>
 </p>
 
