@@ -29,18 +29,6 @@
   <% end %>
   
   <div>
-    <p class="text-center mb-2">or</p>
-    <%- if devise_mapping.omniauthable? %>
-      <%- resource_class.omniauth_providers.each do |provider| %>
-        <%= form_for "Login",
-          url: omniauth_authorize_path(resource_name, provider),
-          method: :post,
-          class: "text-center mb-2",
-          data: {turbo: "false"} do |f| %>
-            <%= f.submit "Login", type: "image", src: url_for("/assets/google/btn_google_signin_light_normal_web.png") %>
-        <% end %>
-      <% end %>
-    <% end %>
     <p class="text-center mb-2 text-muted">sign in with</p>
     <p class="text-center mb-2 text-muted">email: Demo@email.com</p>
     <p class="text-center mb-2 text-muted">password: demonstration</p>
