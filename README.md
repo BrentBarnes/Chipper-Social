@@ -13,40 +13,41 @@ The Ruby on Rails curriculum and course framework can be found [HERE](https://ww
 1. <strong>PostgreSQL</strong> Database
 2. 32 Tests using <strong>RSpec</strong>, <strong>Capybara</strong>, and <strong>FactoryBot</strong>
 3. Styled with <strong>custom CSS</strong> and <strong>Bootstrap CSS</strong>
-4. Uses <strong>Devise</strong> gem to handle user sessions, registrations, and authentication
-5. Seeds 20 fake users using the <strong>Faker</strong> gem
-6. Uses <strong>Gravatar</strong> to handle default avatars
-7. Demo@test.com account comes preloaded with:
+4. Uses <strong>action mailer</strong> to send new users a welcome email. 
+5. Uses <strong>Devise</strong> gem to handle user sessions, registrations, and authentication
+6. Seeds 20 fake users using the <strong>Faker</strong> gem
+7. Uses <strong>Gravatar</strong> to handle default avatars
+8. Demo@test.com account comes preloaded with:
   * An avatar
   * 5 friends
   * 5 friend requests 
   * 10 strangers 
   * Each user has 1-3 posts.
-8. Uses <strong>Turbo Frames</strong>
+9. Uses <strong>Turbo Frames</strong>
   * The middle column of the holy grail layout is constantly being replaced with other Turbo Frames
   * Editing a post replaces the content section with a turbo framed text box
-9. Posts have many features. They can be:
+10. Posts have many features. They can be:
   * Created
   * Liked
   * Commented on
   * Edited
   * Deleted
-10. The like model makes use of a <strong>polymorphic association</strong> (likeable)
+11. The like model makes use of a <strong>polymorphic association</strong> (likeable)
   * Posts and comments are both likeable
-11. Every user has their own profile. A profile contains:
+12. Every user has their own profile. A profile contains:
   * The user's avatar
   * Links to view the user's posts, friends, and liked posts
   * 4 optional information fields: location, education, occupation, and birthday
   * A feed of that user's previous posts
-12. Users can edit their own profile. They can update:
+13. Users can edit their own profile. They can update:
   * Their user avatar by <strong>uploading an image</strong> from their local machine using <strong>active storage</strong>
   * Their name and four other optional information fields
-13. There are 3 tabs related to friendships:
+14. There are 3 tabs related to friendships:
   * Friend Requests: displays who has sent you a friend request
   * Find friends: displays strangers and users who have sent you a friend request
   * My friends: displays friends that you have made. You can also unfriend friends here.
-14. Users can also view their own posts and posts that they've 
-15. Uses images from the <strong>asset pipeline</strong>
+15. Users can also view their own posts and posts that they've 
+16. Uses images from the <strong>asset pipeline</strong>
 
 
 
