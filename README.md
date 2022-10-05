@@ -1,4 +1,3 @@
-# Facebook Clone
 
 # Chipper Social
 
