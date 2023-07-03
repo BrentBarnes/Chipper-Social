@@ -48,13 +48,6 @@ The Ruby on Rails curriculum and course framework can be found [HERE](https://ww
 15. Users can also view their own posts and posts that they've 
 16. Uses images from the <strong>asset pipeline</strong>
 
-
-
-### Live Demo
-
-(This may require around 20-30 seconds to load!)  
-[Link to Heroku Live Demo](https://chipper-social.herokuapp.com/users/sign_in)
-
 ### Screenshots
 <p float = 'left' >
 <figure>
@@ -98,26 +91,3 @@ The Ruby on Rails curriculum and course framework can be found [HERE](https://ww
   <img src="screenshots/tests.png" alt="My friends" width="600" height="200">
 </figure>
 </p>
-
-### Local Installation
-To get started with the app, make sure you have Rails and Git installed on your machine
-Clone the repo to your local machine:
-```ruby
-$ git clone git@github.com:BrentBarnes/Chipper-Social.git
-```
-Then, install the needed gems:
-```ruby
-$ bundle install
-```
-Next, migrate the database:
-```ruby
-$ rails db:migrate
-```
-Load sample users, posts, and friendships!
-```ruby
-$ rails db:seed
-```
-Run the tests:
-```ruby
-$ rspec ./spec/features
-```
